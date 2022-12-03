@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GradesCalculator</string>
+    <string name="btn_return">Return</string>
+    <string name="txt_calculate">Calculate</string>
+    <string name="txt_grade">Enter Grade</string>
+    <string name="txt_instruction">Enter Grade to Calculate the average.</string>
+    <string name="txt_a">Grade = A</string>
+    <string name="txt_b">Grade = B</string>
+    <string name="txt_c">Grade = C</string>
+    <string name="txt_d">Grade = D</string>
+    <string name="txt_e">Grade = E</string>
+    <string name="txt_f">Grade = F</string>
+    <string name="Result">Result....</string>
+    <string name="txt_sub">How many subjects (2 or 3)</string>
+</resources>
