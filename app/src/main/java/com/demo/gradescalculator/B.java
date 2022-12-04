@@ -31,4 +31,3 @@ public class B extends AppCompatActivity implements View.OnClickListener{
         startActivity(intent);
     }
 }
-

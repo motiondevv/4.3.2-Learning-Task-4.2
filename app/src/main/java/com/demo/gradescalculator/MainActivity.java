@@ -1,5 +1,6 @@
 package com.demo.gradescalculator;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,11 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText etNumber3, etNumber, etNumber2, etSub ;
-    String strNumber3, strNumber, strNumber2, strSub,  resultMessage;
-
+    EditText  grade1, grade2, grade3;
+    String  strgrade1, strgrade2, strgrade3, resultMessage;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -24,97 +24,92 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(this, "Calculating....", Toast.LENGTH_SHORT).show();
+    public void onClick(View v){
+        Toast.makeText(this, "Multiplying numbers...", Toast.LENGTH_SHORT).show();
         ComputeResult();
     }
 
     public void ComputeResult(){
-        etNumber3 = (EditText) findViewById(R.id.etNumber3);
-        etNumber = (EditText) findViewById(R.id.etNumber);
-        etNumber2 = (EditText) findViewById(R.id.etNumber2);
-        etSub = (EditText) findViewById(R.id.etSub);
-
-        if(etSub.getText().toString().isEmpty() ||etNumber3.getText().toString().isEmpty() || etNumber.getText().toString().isEmpty() || etNumber2.getText().toString().isEmpty()){
-            strNumber3 = "0";
-            strNumber = "0";
-            strNumber2 = "0";
-            strSub = "0";
-        }else{
-            strNumber3 = etNumber3.getText().toString();
-            strNumber = etNumber.getText().toString();
-            strNumber2 = etNumber2.getText().toString();
-            strSub = etSub.getText().toString();
+        grade1 = (EditText) findViewById(R.id.etNumber);
+        grade2 = (EditText) findViewById(R.id.etNumber2);
+        grade3 = (EditText) findViewById(R.id.etNumber3);
+        if(grade1.getText().toString().isEmpty() || grade2.getText().toString().isEmpty()|| grade3.getText().toString().isEmpty()){
+            strgrade1 = "0";
+            strgrade2 = "0";
+            strgrade3 = "0";
         }
-        double rawNumber3 = Double.parseDouble(strNumber3);
-        double rawNumber = Double.parseDouble(strNumber);
-        double rawNumber2 = Double.parseDouble(strNumber2);
-        int rawSub = Integer.parseInt(strSub);
-        int etSub = Integer.parseInt(strSub);
+        else{
+            strgrade1 = grade1.getText().toString();
+            strgrade2 = grade2.getText().toString();
+            strgrade3 = grade3.getText().toString();
+        }
+        double rawgrade1 = Double.parseDouble(strgrade1);
+        double rawgrade2 = Double.parseDouble(strgrade2);
+        double rawgrade3 = Double.parseDouble(strgrade3);
 
-        switch(rawSub){
-            case 1:
-                rawSub = 2;
+        double result = rawgrade1/3 + rawgrade2/3 + rawgrade3/3;
+
+        switch((int) result){
+            case 99:
+                result = 99;
                 break;
-            case 2:
-                rawSub = 3;
+            case 94:
+                result = 94;
+                break;
+            case 89:
+                result = 89;
+                break;
+            case 84:
+                result = 84;
+                break;
+            case 79:
+                result = 79;
+                break;
+            case 74:
+                result = 74;
                 break;
         }
 
-        double result = (rawNumber + rawNumber2 + rawNumber3) / rawSub;
-        // Casted result to int type, remove to show decimal value
-        resultMessage = "Your average grade is" + result;
 
-        // Create Bundle instance, this will allow transfer of data from Activity to DialogFragment
+
+        resultMessage = (int) result + " is your final grade";
+
         Bundle args = new Bundle();
         args.putString("result", resultMessage);
 
         Intent intent;
 
-        if(result == 100){
+
+        if(result <= 74) {
+            intent = new Intent(MainActivity.this, F.class);
+        }
+        else if (result <= 79) {
+            intent = new Intent(MainActivity.this, E.class);
+        }
+        else if (result <= 84) {
+            intent = new Intent(MainActivity.this, D.class);
+        }
+        else if (result <= 89) {
+            intent = new Intent(MainActivity.this, C.class);
+        }
+        else if (result <= 94) {
+            intent = new Intent(MainActivity.this, B.class);
+        }
+        else {
             intent = new Intent(MainActivity.this, A.class);
-            intent.putExtras(args);
-            startActivity(intent);
-        }
-        if(result == 94.9){
-            intent = new Intent(MainActivity.this, B.class);
-            intent.putExtras(args);
-            startActivity(intent);
-        }
-        if(result == 89.9){
-            intent = new Intent(MainActivity.this, B.class);
-            intent.putExtras(args);
-            startActivity(intent);
-        }
-        if(result == 84.9){
-            intent = new Intent(MainActivity.this, B.class);
-            intent.putExtras(args);
-            startActivity(intent);
-        }
-        if(result == 79.9){
-            intent = new Intent(MainActivity.this, B.class);
-            intent.putExtras(args);
-            startActivity(intent);
-        }
-        if(result == 74){
-            intent = new Intent(MainActivity.this, B.class);
-            intent.putExtras(args);
-            startActivity(intent);
         }
 
 
-
+        intent.putExtras(args);
+        startActivity(intent);
         clearEditText();
-
     }
 
     public void clearEditText(){
-        etNumber.getText().clear();
-        etNumber3.getText().clear();
-        etNumber2.getText().clear();
-        etSub.getText().clear();
-        etSub.requestFocus();
+        grade1.getText().clear();
+        grade2.getText().clear();
+        grade3.getText().clear();
+        grade1.requestFocus();
     }
-}
 
+}

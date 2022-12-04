@@ -14,24 +14,6 @@
         android:theme="@style/Theme.GradesCalculator"
         tools:targetApi="31">
         <activity
-            android:name=".A"
-            android:exported="false" />
-        <activity
-            android:name=".B"
-            android:exported="false" />
-        <activity
-            android:name=".C"
-            android:exported="false" />
-        <activity
-            android:name=".D"
-            android:exported="false" />
-        <activity
-            android:name=".E"
-            android:exported="false" />
-        <activity
-            android:name=".F"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -40,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".A"/>
+        <activity android:name=".B"/>
+        <activity android:name=".C"/>
+        <activity android:name=".D"/>
+        <activity android:name=".E"/>
+        <activity android:name=".F"/>
     </application>
 
 </manifest>

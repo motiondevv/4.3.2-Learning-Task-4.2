@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class A extends AppCompatActivity implements View.OnClickListener{
+public class A  extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class A extends AppCompatActivity implements View.OnClickListener{
         TextView tvResult = findViewById(R.id.txt_result);
         tvResult.setText(result);
         btnReturn.setOnClickListener(this);
-}
+    }
 
     @Override
     public void onClick(View v) {
